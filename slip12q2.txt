@@ -1,0 +1,28 @@
+1. Install Express
+
+npm install express
+
+2. app.js 
+
+const express = require("express");
+const app = express();
+
+app.use(express.json());
+
+let users = [];
+
+// Create User (POST)
+app.post("/users", (req, res) => {
+    const user = {
+        id: users.length + 1,
+        name: req.body.name,
+        age: req.body.age
+    };
+    users.push(user);
+    res.send(user);
+});
+
+// Start Server
+app.listen(3000, () => {
+    console.log("Server running on port 3000");
+});

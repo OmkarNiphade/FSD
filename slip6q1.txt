@@ -1,0 +1,25 @@
+const express = require("express");
+const app = express();
+
+app.use(express.json());
+
+let products = [];
+
+// Home route
+app.get("/", (req, res) => {
+  res.send("Welcome! Use /products to view product list.");
+});
+
+// CREATE product
+app.post("/products", (req, res) => {
+  const product = req.body;
+  products.push(product);
+  res.json({ message: "Product added", product });
+});
+
+// READ products
+app.get("/products", (req, res) => {
+  res.json(products);
+});
+
+app.listen(3000, () => console.log("Server running on port 3000"));

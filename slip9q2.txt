@@ -1,0 +1,45 @@
+1. Install Express and body-parser
+
+npm init -y
+npm install express body-parser
+
+2. Create app.js 
+
+const express = require("express");
+const app = express();
+
+// Middleware to parse JSON
+app.use(express.json());
+
+// Middleware to parse form data
+app.use(express.urlencoded({ extended: true }));
+
+// Custom input validation middleware
+function validateInput(req, res, next) {
+  const { name, age } = req.body;
+
+  if (!name || !age) {
+    return res.status(400).json({ error: "Name and age are required" });
+  }
+
+  if (age < 0) {
+    return res.status(400).json({ error: "Age must be positive" });
+  }
+
+  next();
+}
+
+// Route using validation middleware
+app.post("/user", validateInput, (req, res) => {
+  const { name, age } = req.body;
+
+  res.json({
+    message: "User data received successfully",
+    user: { name, age }
+  });
+});
+
+// Start server
+app.listen(3000, () => {
+  console.log("Server running on port 3000");
+});

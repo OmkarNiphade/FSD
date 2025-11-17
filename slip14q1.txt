@@ -1,0 +1,32 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './slip14q1.html'
+})
+export class AppComponent {
+
+  students = [
+    { name: 'Amit', marks: 80 },
+    { name: 'Riya', marks: 92 },
+    { name: 'John', marks: 85 },
+    { name: 'Neha', marks: 70 }
+  ];
+
+  toppers: string[] = [];
+
+  showToppers() {
+    this.toppers = this.students
+      .filter(s => s.marks >= 85)   // only students >= 85%
+      .map(s => s.name);            // get only names
+  }
+}
+
+// HTML File
+// <h2>Students with 85% and above</h2>
+
+// <button (click)="showToppers()">Show Toppers</button>
+
+// <ul>
+//   <li *ngFor="let t of toppers">{{ t }}</li>
+// </ul>

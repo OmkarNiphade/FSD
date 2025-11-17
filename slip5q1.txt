@@ -1,0 +1,29 @@
+2. mycomponent.component.ts
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-mycomponent',
+  templateUrl: './mycomponent.component.html'
+})
+export class MyComponent {
+  name: string = "";
+}
+
+3. mycomponent.component.html
+
+<input [(ngModel)]="name" placeholder="Enter name">
+<p>You entered: {{ name }}</p>
+
+4. Enable FormsModule in app.module.ts
+
+import { FormsModule } from '@angular/forms';
+
+@NgModule({
+  imports: [BrowserModule, FormsModule]
+})
+export class AppModule {}
+
+5. Use the component in app.component.html
+
+<app-mycomponent></app-mycomponent>

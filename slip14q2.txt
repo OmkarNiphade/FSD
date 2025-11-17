@@ -1,0 +1,46 @@
+const express = require('express');
+const app = express();
+
+app.use(express.json());   // to read JSON data
+
+// Temporary in-memory data
+let employees = [];
+
+// ---------------------------------------
+// Create Employee (POST)
+// ---------------------------------------
+app.post('/employee', (req, res) => {
+    const emp = {
+        id: req.body.id,
+        name: req.body.name,
+        salary: req.body.salary
+    };
+
+    employees.push(emp);
+    res.send({ message: "Employee Created", data: emp });
+});
+
+// ---------------------------------------
+// Update Employee (PUT)
+// ---------------------------------------
+app.put('/employee/:id', (req, res) => {
+    const id = req.params.id;
+
+    // find employee by id
+    let emp = employees.find(e => e.id == id);
+
+    if (!emp) {
+        return res.status(404).send({ message: "Employee Not Found" });
+    }
+
+    // update data
+    emp.name = req.body.name;
+    emp.salary = req.body.salary;
+
+    res.send({ message: "Employee Updated", data: emp });
+});
+
+// Start server
+app.listen(3000, () => {
+    console.log("Server running on port 3000");
+});

@@ -1,0 +1,18 @@
+const companies = [
+  { id: 1, name: 'Alpha', workforce: 25 },
+  { id: 2, name: 'Beta',  workforce: 40 },
+  { id: 3, name: 'Gamma', workforce: 55 }
+];
+
+function findCompanyByIdIfBig(id) {
+  const company = companies.find(c => c.id === id); // find by id
+  if (!company) return `Company with id ${id} not found.`;
+  return company.workforce > 30
+    ? company
+    : `Company ${company.name} has workforce ${company.workforce} (not > 30).`;
+}
+
+// Examples
+console.log(findCompanyByIdIfBig(2)); // returns the company object (workforce 40)
+console.log(findCompanyByIdIfBig(1)); // message: not > 30
+console.log(findCompanyByIdIfBig(10)); // message: not found

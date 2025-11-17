@@ -1,0 +1,23 @@
+1) Create a child component
+
+ng generate component display
+
+2) In child component (display.component.ts)
+
+import { Component, Input } from '@angular/core';
+@Component({
+  selector: 'app-display',
+  templateUrl: './display.component.html'
+})
+export class DisplayComponent {
+
+  @Input() myData: string = "";   // Step: receiving data from parent
+}
+
+3) Child HTML (display.component.html)
+
+<p>Received Data: {{ myData }}</p>
+
+4) Use the child component in parent HTML (app.component.html)
+
+<app-display [myData]="'Hello Angular'"></app-display>

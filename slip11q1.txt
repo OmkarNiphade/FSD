@@ -1,0 +1,25 @@
+const express = require("express");
+const app = express();
+
+app.use(express.json()); // to read JSON body
+
+let movies = []; // in-memory movie list
+
+// CREATE Movie (POST)
+app.post("/movies", (req, res) => {
+  const movie = req.body;
+  movies.push(movie);
+
+  res.json({
+    message: "Movie added successfully",
+    movie
+  });
+});
+
+// Optional home route
+app.get("/", (req, res) => {
+  res.send("Welcome! Use POST /movies to add a movie.");
+});
+
+// Start server
+app.listen(3000, () => console.log("Server running on port 3000"));

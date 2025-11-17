@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app ng-init="games=['Cricket','Football','Hockey','Chess']; show=false">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+<body>
+
+<h2>Game List</h2>
+
+<button ng-click="show=true">Show Games</button>
+
+<ul ng-show="show">
+    <li ng-repeat="g in games" ng-bind="g"></li>
+</ul>
+
+</body>
+</html>

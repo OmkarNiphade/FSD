@@ -1,0 +1,27 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html'
+})
+export class AppComponent {
+
+  students = [
+    { name: "Omkar", sport: "Basketball" },
+    { name: "Riya", sport: "Cricket" },
+    { name: "Aman", sport: "Basketball" },
+    { name: "Sara", sport: "Football" }
+  ];
+
+  basketballPlayers = this.students
+    .filter(s => s.sport === "Basketball")
+    .map(s => s.name);
+
+}
+
+// HTML File
+// <h3>Students Playing Basketball</h3>
+
+// <div *ngFor="let s of basketballPlayers">
+//   {{ s }}
+// </div>

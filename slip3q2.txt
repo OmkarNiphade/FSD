@@ -1,0 +1,14 @@
+const companies = [
+  { id: 1, name: 'Alpha', workforce: 25 },
+  { id: 2, name: 'Beta',  workforce: 40 },
+  { id: 3, name: 'Gamma', workforce: 55 }
+];
+
+// A) Find first company with workforce > 30
+const firstBig = companies.find(c => c.workforce > 30);
+console.log(firstBig); // { id: 2, name: 'Beta', workforce: 40 }
+
+// B) Find company by id (e.g. id = 3) and ensure workforce > 30
+const idToFind = 3;
+const byId = companies.find(c => c.id === idToFind && c.workforce > 30);
+console.log(byId); // { id: 3, name: 'Gamma', workforce: 55 } or undefined if not matched

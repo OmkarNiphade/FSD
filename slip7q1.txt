@@ -1,0 +1,17 @@
+const fs = require("fs").promises;  
+
+async function readFiles() {
+  try {
+    const f1 = fs.readFile("file1.txt", "utf8");
+    const f2 = fs.readFile("file2.txt", "utf8");
+
+    const [data1, data2] = await Promise.all([f1, f2]);
+
+    console.log("File 1:", data1);
+    console.log("File 2:", data2);
+  } catch (err) {
+    console.log("Error:", err);
+  }
+}
+
+readFiles();

@@ -1,0 +1,23 @@
+>>Install Angular CLI
+    npm install -g @angular/cli
+
+>>Create a new Angular application
+	ng new project_name
+
+>>Run the Angular application
+    ng serve --open
+
+>>Create Angular Components
+    ng g c component-name
+
+>>Create Angular Service
+    ng g s service-name
+
+>>Create Module
+	ng g m module-name
+
+>>Generate Routing
+	ng generate module app-routing --flat --module=app	
+
+>>Create Directive
+	ng g d directive-name

@@ -1,0 +1,18 @@
+const fs = require("fs").promises; // using promise-based fs
+
+async function readFiles() {
+  try {
+    const file1 = fs.readFile("file1.txt", "utf8"); // returns Promise
+    const file2 = fs.readFile("file2.txt", "utf8");
+
+    const results = await Promise.all([file1, file2]); // wait for both
+
+    console.log("File 1:", results[0]);
+    console.log("File 2:", results[1]);
+
+  } catch (err) {
+    console.log("Error:", err);
+  }
+}
+
+readFiles();

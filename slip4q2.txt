@@ -1,0 +1,25 @@
+const express = require("express");
+const app = express();
+
+// Middleware for JSON + form-data
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// POST route with simple validation
+app.post("/user", (req, res) => {
+  const { name, age } = req.body;
+
+  // Basic validation
+  if (!name || !age) {
+    return res.status(400).json({ message: "Name and age are required" });
+  }
+
+  if (age < 1) {
+    return res.status(400).json({ message: "Age must be positive" });
+  }
+
+  res.json({ message: "Data received", data: req.body });
+});
+
+// Start server
+app.listen(3000, () => console.log("Server running on port 3000"));

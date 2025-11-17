@@ -1,0 +1,39 @@
+const express = require("express");
+const app = express();
+
+app.use(express.json());  // To read JSON body
+
+let employees = [];       // In-memory storage
+
+// CREATE Employee (POST)
+app.post("/employees", (req, res) => {
+  const emp = req.body;
+  employees.push(emp);
+  res.json({ message: "Employee added", emp });
+});
+
+// UPDATE Employee (PUT)
+app.put("/employees/:id", (req, res) => {
+  const empId = parseInt(req.params.id);
+  const updatedData = req.body;
+
+  // find index
+  const index = employees.findIndex(e => e.id === empId);
+
+  if (index === -1) {
+    return res.status(404).json({ message: "Employee not found" });
+  }
+
+  // update employee
+  employees[index] = { ...employees[index], ...updatedData };
+
+  res.json({ message: "Employee updated", employee: employees[index] });
+});
+
+// Home route (optional)
+app.get("/", (req, res) => {
+  res.send("Welcome! Use /employees to create or update employees.");
+});
+
+// Start server
+app.listen(3000, () => console.log("Server running on port 3000"));

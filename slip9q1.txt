@@ -1,0 +1,9 @@
+const companies = [
+  { id: 1, name: "Google", workforce: 25 },
+  { id: 2, name: "TCS", workforce: 40 },
+  { id: 3, name: "Infosys", workforce: 15 }
+];
+
+const result = companies.find(c => c.workforce > 30);
+
+console.log(result);

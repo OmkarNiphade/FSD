@@ -1,0 +1,15 @@
+const employees = [
+  { id: 1, name: "Amit", salary: 20000 },
+  { id: 2, name: "Riya", salary: 30000 },
+  { id: 3, name: "John", salary: 28000 }
+];
+
+function findEmployee(id) {
+  const emp = employees.find(e => e.id === id); // find by id
+
+  if (!emp) return "Employee not found";
+
+  return emp.salary > 25000 ? emp : "Salary is not greater than 25000";
+}
+
+console.log(findEmployee(2)); // { id: 2, name: 'Riya', salary: 30000 }

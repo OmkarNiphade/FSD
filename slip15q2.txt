@@ -1,0 +1,32 @@
+1) app.component.ts
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html'
+})
+export class AppComponent {
+
+  students = [
+    { name: 'Omkar',   percentage: 90 },
+    { name: 'Rahul',   percentage: 70 },
+    { name: 'Sneha',   percentage: 85 },
+    { name: 'Priya',   percentage: 60 },
+    { name: 'Ravi',    percentage: 85 }
+  ];
+
+  result = this.students
+                .filter(s => s.percentage === 85)
+                .map(s => s.name);
+}
+
+
+2) app.component.html
+
+<h3>Students who got 85%:</h3>
+<ul>
+  <li *ngFor="let s of result">
+    {{ s }}
+  </li>
+</ul>

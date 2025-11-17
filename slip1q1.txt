@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app ng-init="a=0; b=0; result=0; show=false">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body>
+
+    <input type="number" ng-model="a" placeholder="A">
+    <input type="number" ng-model="b" placeholder="B">
+
+    <button ng-click="result = a + b; show=true"
+            ng-disabled="!a && a!==0 || !b && b!==0">
+        Add
+    </button>
+
+    <p ng-show="show">Result: <span ng-bind="result"></span></p>
+
+</body>
+</html>

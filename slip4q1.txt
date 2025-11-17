@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app ng-init="companies=[
+    {name:'Google', employees:150},
+    {name:'Microsoft', employees:120},
+    {name:'TCS', employees:50},
+    {name:'Infosys', employees:40}
+]">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+
+<body>
+
+<h2>Company Details</h2>
+
+<ul>
+    <li ng-repeat="c in companies">
+        {{c.name}} — {{c.employees}} Employees
+    </li>
+</ul>
+
+</body>
+</html>
