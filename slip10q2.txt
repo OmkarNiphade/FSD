@@ -1,0 +1,35 @@
+npm install express
+
+const express = require("express");
+const app = express();
+
+app.use(express.json());          
+app.use(express.urlencoded({ extended: true })); 
+
+app.post("/employee", (req, res) => {
+    const { name, salary } = req.body;
+
+    if (!name || !salary) {
+        return res.status(400).json({
+            success: false,
+            message: "Name and Salary are required!"
+        });
+    }
+
+    if (isNaN(salary)) {
+        return res.status(400).json({
+            success: false,
+            message: "Salary must be a number!"
+        });
+    }
+
+    res.status(200).json({
+        success: true,
+        message: "Employee data received successfully!",
+        data: { name, salary }
+    });
+});
+
+app.listen(3000, () => {
+    console.log("Server running on http://localhost:3000");
+});
